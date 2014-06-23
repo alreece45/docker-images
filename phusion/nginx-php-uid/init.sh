@@ -5,6 +5,14 @@ then
     gid=`stat -c '%u' $DOCROOT`
     
     echo "Updating www-data ids to ($uid:$gid)"
-    sed -i "s#^www-data:x:.*:.*:#www-data:x:$uid:$gid:#" /etc/passwd
-    sed -i "s#^www-data:x:.*:#www-data:x:$gid:#" /etc/group
+
+    if [ ! $uid -eq 0 ]
+    then
+        sed -i "s#^www-data:x:.*:.*:#www-data:x:$uid:$gid:#" /etc/passwd
+    fi
+
+    if [ ! $gid -eq 0 ]
+    then
+        sed -i "s#^www-data:x:.*:#www-data:x:$gid:#" /etc/group
+    fi
 fi
