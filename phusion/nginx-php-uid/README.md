@@ -1,1 +1,1 @@
-nginx-php setup with a hack to make the UIDs match when sharing volumes.
+nginx-php build with a tweak to make the www-data uid match the document root.

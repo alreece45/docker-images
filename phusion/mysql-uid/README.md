@@ -1,1 +1,1 @@
-nginx-php setup with a hack to make the UIDs match when sharing volumes.
+mysql image with an tweak to make the mysql UID match that of the volume.
