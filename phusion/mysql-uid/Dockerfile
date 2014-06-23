@@ -1,4 +1,4 @@
-FROM alreece45/phusion-nginx-php:latest
+FROM alreece45/phusion-mysql:latest
 MAINTAINER Alexander Reece <alreece45@gmail.com>
 
 ENV HOME /root
