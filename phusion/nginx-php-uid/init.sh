@@ -15,4 +15,6 @@ then
     then
         sed -i "s#^www-data:x:.*:#www-data:x:$gid:#" /etc/group
     fi
+
+    chown www-data /var/log/nginx
 fi
