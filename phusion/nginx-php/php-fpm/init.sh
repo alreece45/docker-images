@@ -9,6 +9,12 @@ fi
 
 find /etc/php5 -name php.ini -print0 | xargs -0 sed -i "s#;date.timezone =.*#date.timezone = $PHP_TIMEZONE#"
 
+if [ ! -z "$DEBUG" ]
+then
+	php5enmod xdebug
+	sed -i 's#^display_errors = Off#display_errors = On#' /etc/php5/fpm/php.ini
+fi
+
 # Add environment variables to the php-fpm configuration
 # Based on startup.sh from https://github.com/dubture-dockerfiles/nginx-php
 set_phpfpm_env_var() {
