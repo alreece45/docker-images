@@ -25,17 +25,19 @@ set_phpfpm_env_var() {
     fi
 
     # Check whether variable already exists
-    if grep "env[$1]" /etc/php5/fpm/pool.d/www.conf
+    if grep "^env\[$1\]=" /etc/php5/fpm/pool.d/www.conf
     then
-        sed -i "s#^env\[$1.*#env[$1] = $2#g" /etc/php5/fpm/pool.d/www.conf
+        sed -i "s#^env\[$1\]=.*#env[$1]=\"$2\"#g" /etc/php5/fpm/pool.d/www.conf
     else
-        echo "env[$1] = $2" >> /etc/php5/fpm/pool.d/www.conf
+        echo "env[$1]=\"$2\"" >> /etc/php5/fpm/pool.d/www.conf
     fi
 }
 
 # Grep for variables that look like docker set them (_PORT_)
-for _var in `env | grep _PORT_ | awk -F = '{print $1}'`
+for file in /etc/container_environment/*
 do
-    eval _val=\$$_var
-    set_phpfpm_env_var $_var $_val
+    var=$(basename $file)
+    val=$(cat $file)
+    echo $var $val
+    set_phpfpm_env_var $var $val
 done
