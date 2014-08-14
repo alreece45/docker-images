@@ -11,3 +11,4 @@ cp -a /build/mysql/runit.sh /etc/service/mysql/run
 chmod +x /etc/service/mysql/run
 
 cat /dev/null > /var/log/mysql/error.log
+find /build -delete
