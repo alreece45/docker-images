@@ -11,10 +11,10 @@ This container has two primary purposes:
 
 Example Usage:
 
-docker run --rm --link container-name:mysql \
-    -e MYSQL_USER="root" -e MYSQL_PWD=""
-    -e DATABASE_NAME="dbname" -e DATABASE_USER="dbuser" -e DATABASE_SQL="/sql/mysqlexport.sql"
-    alreece45/phusion-mysql-bootstrap
+    docker run --rm --link container-name:mysql \
+        -e MYSQL_USER="root" -e MYSQL_PWD=""
+        -e DATABASE_NAME="dbname" -e DATABASE_USER="dbuser" -e DATABASE_SQL="/sql/mysqlexport.sql"
+        alreece45/phusion-mysql-bootstrap
 
 These environmental variables are used to configure and initialize the database:
 
