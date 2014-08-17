@@ -10,18 +10,18 @@ MYSQL_OPTS=""
 
 if [ $INIT_MYSQL -eq 1 ]
 then
-    if [ ! -e "$ADMIN_USER" ]
+    if [ -z "$ADMIN_USER" ]
     then
         ADMIN_USER="admin"
     fi
 
-    if [ ! -e "$ADMIN_HOST" ]
+    if [ -z "$ADMIN_HOST" ]
     then
         ADMIN_HOST="172.16.0.0/255.240.0.0"
         echo "Allowing connections to user '$ADMIN_USER' from $ADMIN_HOST"
     fi
 
-    if [ ! -e "$ADMIN_PASS" ]
+    if [ -z "$ADMIN_PASS" ]
     then
         ADMIN_PASS=$(pwgen -s 12 1)
         echo "Generated password for user '$ADMIN_USER': $ADMIN_PASS"
