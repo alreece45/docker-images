@@ -5,10 +5,10 @@ EXPOSE 3306
 VOLUME ["/var/log/mysql", "/var/lib/mysql"]
 
 # Build packages first
-COPY ./packages.sh /build/packages.sh
+COPY ./phusion-trusty/packages.sh /build/packages.sh
 RUN /build/packages.sh
 
-COPY ./mysql /build/mysql
+COPY ./phusion-trusty/mysql /build/mysql
 RUN /build/mysql/setup.sh 
 
 CMD ["/sbin/my_init"]

@@ -13,6 +13,7 @@ Images
  * **mysql** Image for running a MySQL Server
 
    ([phusion-latest](https://github.com/alreece45/docker-images/tree/master/phusion-latest/mysql), 
+   [phusion-trusty](https://github.com/alreece45/docker-images/tree/master/phusion-trusty/mysql), 
    [ubuntu-trusty](https://github.com/alreece45/docker-images/tree/master/ubuntu-trusty/mysql))
    
  * **mysql-bootstrap** Image for bootstraping databases and users on linked containers.
