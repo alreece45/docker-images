@@ -8,7 +8,8 @@ Images
 
  * **nginx-php** Image for running nginx and php-fpm
 
-   ([phusion-latest](https://github.com/alreece45/docker-images/tree/master/phusion-latest/nginx-php))
+   ([phusion-latest](https://github.com/alreece45/docker-images/tree/master/phusion-latest/nginx-php), 
+   [phusion-trusty](https://github.com/alreece45/docker-images/tree/master/phusion-trusty/nginx-php))
    
  * **mysql** Image for running a MySQL Server
 
