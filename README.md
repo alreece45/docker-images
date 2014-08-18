@@ -21,7 +21,8 @@ Images
    
  * **icinga2** Image for bootstraping databases and users on linked containers.
 
-   ([phusion-latest](https://github.com/alreece45/docker-images/tree/master/phusion-latest/icinga2))
+   ([phusion-latest](https://github.com/alreece45/docker-images/tree/master/phusion-latest/icinga2), 
+   [ubuntu-trusty](https://github.com/alreece45/docker-images/tree/master/ubuntu-trusty-latest/icinga2))
 
 Building
 ----------
