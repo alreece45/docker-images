@@ -17,7 +17,8 @@ Images
    
  * **mysql-bootstrap** Image for bootstraping databases and users on linked containers.
 
-   ([phusion-latest](https://github.com/alreece45/docker-images/tree/master/phusion-latest/mysql-bootstrap))
+   ([phusion-latest](https://github.com/alreece45/docker-images/tree/master/phusion-latest/mysql-bootstrap), 
+   [phusion-trusty](https://github.com/alreece45/docker-images/tree/master/phusion-trusty/mysql-bootstrap))
    
  * **icinga2** Image for bootstraping databases and users on linked containers.
 
