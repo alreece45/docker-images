@@ -28,6 +28,9 @@ Images
    [phusion-trusty](https://github.com/alreece45/docker-images/tree/master/phusion-trusty/icinga2), 
    [ubuntu-trusty](https://github.com/alreece45/docker-images/tree/master/ubuntu-trusty-latest/icinga2))
 
+ * **ssh-keygen** Create SSH keys and add them to authorized_keys files.
+   ([ubuntu-trusty](https://github.com/alreece45/docker-images/tree/master/ubuntu-trusty/ssh-keygen))
+
 Building
 ----------
 
