@@ -8,7 +8,7 @@ VOLUME ["/var/log/mysql", "/var/lib/mysql"]
 COPY ./packages.sh /build/packages.sh
 RUN /build/packages.sh
 
-COPY ./mysql /build/mysql
+COPY ./service /build/mysql
 RUN /build/mysql/setup.sh 
 
 CMD ["/sbin/my_init"]

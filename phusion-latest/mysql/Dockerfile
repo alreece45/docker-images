@@ -9,6 +9,6 @@ COPY ./phusion-trusty/packages.sh /build/packages.sh
 RUN /build/packages.sh
 
 COPY ./phusion-trusty/mysql /build/mysql
-RUN /build/mysql/setup.sh 
+RUN /service/mysql/setup.sh 
 
 CMD ["/sbin/my_init"]
