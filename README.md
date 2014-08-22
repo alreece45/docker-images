@@ -8,32 +8,32 @@ Images
 
  * **nginx-php** Image for running nginx and php-fpm
 
-   ([phusion-latest](https://github.com/alreece45/docker-images/tree/master/nginx-php/phusion-latest), 
-   [phusion-trusty](https://github.com/alreece45/docker-images/tree/master/nginx-php/phusion-trusty))
+   ([phusion_latest](https://github.com/alreece45/docker-images/tree/master/nginx-php/phusion_latest), 
+   [phusion_trusty](https://github.com/alreece45/docker-images/tree/master/nginx-php/phusion_trusty))
    
  * **mysql** Image for running a MySQL Server
 
-   ([phusion-latest](https://github.com/alreece45/docker-images/tree/master/mysql/phusion-latest), 
-   [phusion-trusty](https://github.com/alreece45/docker-images/tree/master/mysql/phusion-trusty), 
-   [ubuntu-trusty](https://github.com/alreece45/docker-images/tree/master/mysql/ubuntu-trusty))
+   ([phusion_latest](https://github.com/alreece45/docker-images/tree/master/mysql/phusion_latest), 
+   [phusion_trusty](https://github.com/alreece45/docker-images/tree/master/mysql/phusion_trusty), 
+   [ubuntu_trusty](https://github.com/alreece45/docker-images/tree/master/mysql/ubuntu_trusty))
    
  * **mysql-bootstrap** Image for bootstraping databases and users on linked containers.
 
-   ([phusion-latest](https://github.com/alreece45/docker-images/tree/master/mysql-bootstrap/phusion-latest), 
-   [phusion-trusty](https://github.com/alreece45/docker-images/tree/master/mysql-bootstrap/phusion-trusty), 
-   [ubuntu-trusty](https://github.com/alreece45/docker-images/tree/master/mysql-bootstrap/ubuntu-trusty))
+   ([phusion_latest](https://github.com/alreece45/docker-images/tree/master/mysql-bootstrap/phusion_latest), 
+   [phusion_trusty](https://github.com/alreece45/docker-images/tree/master/mysql-bootstrap/phusion_trusty), 
+   [ubuntu_trusty](https://github.com/alreece45/docker-images/tree/master/mysql-bootstrap/ubuntu_trusty))
    
  * **icinga2** Image for bootstraping databases and users on linked containers.
 
-   ([phusion-latest](https://github.com/alreece45/docker-images/tree/master/icinga2/phusion-latest), 
-   [phusion-trusty](https://github.com/alreece45/docker-images/tree/master/icinga2/phusion-trusty), 
-   [ubuntu-trusty](https://github.com/alreece45/docker-images/tree/master/icinga2/ubuntu-trusty))
+   ([phusion_latest](https://github.com/alreece45/docker-images/tree/master/icinga2/phusion_latest), 
+   [phusion_trusty](https://github.com/alreece45/docker-images/tree/master/icinga2/phusion_trusty), 
+   [ubuntu_trusty](https://github.com/alreece45/docker-images/tree/master/icinga2/ubuntu_trusty))
 
  * **ssh-keygen** Create SSH keys and add them to authorized_keys files.
 
-   ([phusion-latest](https://github.com/alreece45/docker-images/tree/master/ssh-keygen/phusion-latest), 
-   [phusion-trusty](https://github.com/alreece45/docker-images/tree/master/ssh-keygen/phusion-trusty), 
-   [ubuntu-trusty](https://github.com/alreece45/docker-images/tree/master/ssh-keygen/ubuntu-trusty))
+   ([phusion_latest](https://github.com/alreece45/docker-images/tree/master/ssh-keygen/phusion_latest), 
+   [phusion_trusty](https://github.com/alreece45/docker-images/tree/master/ssh-keygen/phusion_trusty), 
+   [ubuntu_trusty](https://github.com/alreece45/docker-images/tree/master/ssh-keygen/ubuntu_trusty))
 
 Building
 ----------
