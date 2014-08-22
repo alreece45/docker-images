@@ -1,1 +1,0 @@
-CREATE TABLE test_sqld_xz ( id INT UNSIGNED PRIMARY KEY );

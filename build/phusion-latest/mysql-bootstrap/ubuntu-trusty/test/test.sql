@@ -1,1 +1,0 @@
-CREATE TABLE test_sql ( id INT UNSIGNED PRIMARY KEY );
