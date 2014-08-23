@@ -1,1 +1,0 @@
-../../ubuntu-trusty/service/service.sh
