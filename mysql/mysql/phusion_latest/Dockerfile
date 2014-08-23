@@ -8,7 +8,7 @@ VOLUME ["/var/log/mysql", "/var/lib/mysql"]
 COPY ./phusion_trusty/packages.sh /build/packages.sh
 RUN /build/packages.sh
 
-COPY ./phusion_trusty/mysql /build/mysql
+COPY ./phusion_trusty/service /build/mysql
 RUN /service/mysql/setup.sh 
 
 CMD ["/sbin/my_init"]
