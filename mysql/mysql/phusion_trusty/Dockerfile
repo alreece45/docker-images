@@ -6,8 +6,8 @@ COPY ./packages.sh /build/packages.sh
 RUN /build/packages.sh
 
 COPY ./service /build/mysql
-RUN /build/mysql/setup.sh 
+RUN /build/mysql/setup.sh
 
 CMD ["/sbin/my_init"]
 
-EXPOSE 3306 
+EXPOSE 3306
