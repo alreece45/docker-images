@@ -2,7 +2,7 @@ FROM alreece45/phusion-mysql-base:trusty
 MAINTAINER Alexander Reece <alreece45@gmail.com>
 
 # Build packages first
-COPY ./packages.sh /build/packages.sh
+COPY ./ubuntu_trusty/packages.sh /build/packages.sh
 RUN /build/packages.sh
 
 COPY ./service /build/mysql
