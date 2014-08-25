@@ -8,6 +8,6 @@ RUN /build/packages.sh
 COPY ./service /build/mysql
 RUN /build/mysql/setup.sh
 
-CMD ["/opt/docker-mysql/init"]
+CMD ["/opt/init-mysql.sh"]
 
 EXPOSE 3306
