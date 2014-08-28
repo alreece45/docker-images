@@ -54,8 +54,8 @@ then
     fi
 
     touch /tmp/mysql-init.sql
-    chown root:mysql /tmp/mysql-init.sql
-    chmod 740 /tmp/mysql-init.sql
+    chown mysql /tmp/mysql-init.sql
+    chmod 700 /tmp/mysql-init.sql
 
     echo "DELETE FROM mysql.user WHERE user != 'root' ;" >> /tmp/mysql-init.sql
     echo "GRANT ALL ON *.* TO '$ADMIN_USER'@'$ADMIN_HOST' IDENTIFIED BY '$ADMIN_PASS' WITH GRANT OPTION;" > /tmp/mysql-init.sql
