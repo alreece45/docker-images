@@ -62,15 +62,21 @@ then
     echo "DROP DATABASE IF EXISTS test;" >> /tmp/mysql-init.sql
     echo "FLUSH PRIVILEGES;" >> /tmp/mysql-init.sql
 
+    # When done, output to a file so we know we can delete the init file
+    echo "SELECT 'Done' INTO OUTFILE '/tmp/mysql-init-done'" >> /tmp/mysql-init.sql
 
-    MYSQL_OPTS=" --init-file=/tmp/mysql-init.sql"
+    MYSQL_OPTS=" --init-file=/tmp/mysql-init.sql $MYSQL_OPTS"
 fi
 
-/usr/bin/mysqld_safe $MYSQL_OPTS &
-sleep 10
+exec /usr/bin/mysqld_safe $MYSQL_OPTS &
 
+# Remove the temporary file when initializtion is complete
 if [ -f /tmp/mysql-init.sql ]
 then
-    rm /tmp/mysql-init.sql
+    while [ ! -f /tmp/mysql-init-done ]
+    do
+        sleep 1
+    done
+    rm /tmp/mysql-init.sql /tmp/mysql-init-done
 fi
 wait
