@@ -62,7 +62,6 @@ then
     echo "DROP DATABASE IF EXISTS test;" >> /tmp/mysql-init.sql
     echo "FLUSH PRIVILEGES;" >> /tmp/mysql-init.sql
 
-    cat /tmp/mysql-init.sql
 
     MYSQL_OPTS=" --init-file=/tmp/mysql-init.sql"
 fi
