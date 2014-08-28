@@ -25,39 +25,14 @@ then
 	fi
 fi
 
-if [ $SYNC_UID -eq 1 ]
-then
-	if [ -d /var/lib/mysql ]
-	then
-	    uid=`stat -c '%u' /var/lib/mysql`
-	    gid=`stat -c '%g' /var/lib/mysql`
-
-	    echo "Updating mysql ids to ($uid:$gid)"
-
-	    # Only update the ids if they're not root
-	    if [ ! $uid -eq 0 ]
-	    then
-		sed -i "s#^mysql:x:.*:.*:#mysql:x:$uid:$gid:#" /etc/passwd
-	    fi
-
-	    if [ ! $gid -eq 0 ]
-	    then
-		sed -i "s#^mysql:x:.*:#mysql:x:$gid:#" /etc/group
-	    fi
-
-	    chown mysql:mysql /var/run/mysqld
-	fi
-fi
-
-
 INIT_MYSQL=0
 if [ ! -d /var/lib/mysql/mysql ]
 then
-     mysql_install_db --user=mysql
+     mysql_install_db --user=mysql > /dev/null
      INIT_MYSQL=1
 fi
 
-MYSQL_OPTS=""
+MYSQL_OPTS="--skip-syslog $MYSQL_OPTS"
 
 if [ $INIT_MYSQL -eq 1 ]
 then
