@@ -23,4 +23,4 @@ test -d '/var/log/icinga2' || mkdir /var/log/icinga2
 chown "$DAEMON_USER":adm /var/log/icinga2
 chmod 0761 /var/log/icinga2
 
-/etc/init.d/icinga2 foreground
+exec /etc/init.d/icinga2 foreground
