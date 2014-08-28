@@ -5,6 +5,9 @@ MAINTAINER Alexander Reece <alreece45@gmail.com>
 COPY ./installer /opt/icinga2-installer
 RUN /opt/icinga2-installer/install.sh
 
-# Configure the service to start
 COPY ./setup /opt/icinga2-setup
 RUN /opt/icinga2-setup/setup.sh
+
+# Setup the packages
+COPY ./service /build/icinga2
+RUN /build/icinga2/setup.sh
