@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # If cnonfigured, ensure the UID of the mysql directory is correct
-if [ $SYNC_UID -eq 1 ]
+if [ -n "$SYNC_UID" -a "$SYNC_UID" = "1" ]
 then
 	if [ -d /var/lib/mysql ]
 	then
