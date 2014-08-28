@@ -14,7 +14,7 @@ else
 	apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 36862847
 fi
 apt-get update
-apt-get -y install icinga2
+apt-get -y install icinga2 ssmtp bsd-mailx
 
 # Clean up
 apt-get clean
