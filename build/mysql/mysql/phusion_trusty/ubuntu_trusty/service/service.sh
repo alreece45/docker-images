@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # If cnonfigured, ensure the UID of the mysql directory is correct
-if [ $SYNC_UID -eq 1 ]
+if [ -n "$SYNC_UID" -a "$SYNC_UID" = "1" ]
 then
 	if [ -d /var/lib/mysql ]
 	then
@@ -24,40 +24,15 @@ then
 	    chown mysql:mysql /var/run/mysqld
 	fi
 fi
-
-if [ $SYNC_UID -eq 1 ]
-then
-	if [ -d /var/lib/mysql ]
-	then
-	    uid=`stat -c '%u' /var/lib/mysql`
-	    gid=`stat -c '%g' /var/lib/mysql`
-
-	    echo "Updating mysql ids to ($uid:$gid)"
-
-	    # Only update the ids if they're not root
-	    if [ ! $uid -eq 0 ]
-	    then
-		sed -i "s#^mysql:x:.*:.*:#mysql:x:$uid:$gid:#" /etc/passwd
-	    fi
-
-	    if [ ! $gid -eq 0 ]
-	    then
-		sed -i "s#^mysql:x:.*:#mysql:x:$gid:#" /etc/group
-	    fi
-
-	    chown mysql:mysql /var/run/mysqld
-	fi
-fi
-
 
 INIT_MYSQL=0
 if [ ! -d /var/lib/mysql/mysql ]
 then
-     mysql_install_db --user=mysql
+     mysql_install_db --user=mysql > /dev/null
      INIT_MYSQL=1
 fi
 
-MYSQL_OPTS=""
+MYSQL_OPTS="--skip-syslog $MYSQL_OPTS"
 
 if [ $INIT_MYSQL -eq 1 ]
 then
@@ -79,24 +54,29 @@ then
     fi
 
     touch /tmp/mysql-init.sql
-    chown root:mysql /tmp/mysql-init.sql
-    chmod 740 /tmp/mysql-init.sql
+    chown mysql /tmp/mysql-init.sql
+    chmod 700 /tmp/mysql-init.sql
 
     echo "DELETE FROM mysql.user WHERE user != 'root' ;" >> /tmp/mysql-init.sql
     echo "GRANT ALL ON *.* TO '$ADMIN_USER'@'$ADMIN_HOST' IDENTIFIED BY '$ADMIN_PASS' WITH GRANT OPTION;" > /tmp/mysql-init.sql
     echo "DROP DATABASE IF EXISTS test;" >> /tmp/mysql-init.sql
     echo "FLUSH PRIVILEGES;" >> /tmp/mysql-init.sql
 
-    cat /tmp/mysql-init.sql
+    # When done, output to a file so we know we can delete the init file
+    echo "SELECT 'Done' INTO OUTFILE '/tmp/mysql-init-done'" >> /tmp/mysql-init.sql
 
-    MYSQL_OPTS=" --init-file=/tmp/mysql-init.sql"
+    MYSQL_OPTS=" --init-file=/tmp/mysql-init.sql $MYSQL_OPTS"
 fi
 
-/usr/bin/mysqld_safe $MYSQL_OPTS &
-sleep 10
+exec /usr/bin/mysqld_safe $MYSQL_OPTS &
 
+# Remove the temporary file when initializtion is complete
 if [ -f /tmp/mysql-init.sql ]
 then
-    rm /tmp/mysql-init.sql
+    while [ ! -f /tmp/mysql-init-done ]
+    do
+        sleep 1
+    done
+    rm /tmp/mysql-init.sql /tmp/mysql-init-done
 fi
 wait

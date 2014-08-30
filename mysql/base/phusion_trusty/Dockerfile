@@ -1,4 +1,4 @@
-FROM phusion/baseimage:0.9.12
+FROM phusion/baseimage:0.9.13
 MAINTAINER Alexander Reece <alreece45@gmail.com>
 
 # Build packages first

@@ -6,7 +6,7 @@ COPY ./phusion_trusty/ubuntu_trusty/packages.sh /build/packages.sh
 RUN /build/packages.sh
 
 COPY ./phusion_trusty/service /build/mysql
-RUN /service/mysql/setup.sh 
+RUN /build/mysql/setup.sh
 
 CMD ["/sbin/my_init"]
 

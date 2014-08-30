@@ -1,5 +1,5 @@
 #!/bin/sh
-sed -i "s#^bind-address\s*=\s*.*#bind-address = 0.0.0.0#" /etc/mysql/my.cnf
+/build/mysql/ubuntu-setup.sh
 
 # Configure mysql to start as a service
 mkdir /etc/service/mysql
