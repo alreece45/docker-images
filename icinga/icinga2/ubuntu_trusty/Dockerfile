@@ -6,5 +6,5 @@ COPY ./installer /opt/icinga2-installer
 RUN /opt/icinga2-installer/install.sh
 
 # Setup the packages
-COPY ./service.sh /opt/icinga2-init.sh
-CMD ["/opt/icinga2-init.sh"]
+COPY ./service.sh /opt/init-icinga2.sh
+CMD ["/opt/init-icinga2.sh"]
