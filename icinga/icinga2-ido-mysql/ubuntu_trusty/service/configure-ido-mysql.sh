@@ -44,5 +44,3 @@ sed -i 's#database = ".*",$#database = "'"$sed_name"'"#g' /etc/icinga2/features-
 sed -i 's#user = ".*",$#user = "'"$sed_user"'",#g' /etc/icinga2/features-available/ido-mysql.conf
 sed -i 's#password = ".*",$#password = "'"$sed_pass"'",#g' /etc/icinga2/features-available/ido-mysql.conf
 sed -i 's#host = ".*",$#host = "'"$sed_host"'",#g' /etc/icinga2/features-available/ido-mysql.conf
-
-exec /opt/init-icinga2.sh

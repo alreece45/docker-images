@@ -6,5 +6,5 @@ COPY ./packages.sh /build/packages.sh
 RUN /build/packages.sh
 
 # Setup the packages
-COPY ./service.sh /opt/init-icinga2-ido-mysql.sh
-CMD ["/opt/init-icinga2-ido-mysql.sh"]
+COPY ./service /opt/icinga2
+CMD ["/opt/icinga2/init-ido-mysql.sh"]
