@@ -34,4 +34,15 @@ then
 	sed -r -i 's#^(//)?const NodeName = ".*"#const NodeName = "'"$sed_node_name"'"#g' /etc/icinga2/constants.conf
 fi
 
+# Provide an option to disable conf.d loading (documented practice in clusters)
+if [ -z "$CONFD" ]
+then
+	CONFD="1"
+fi
+
+if [ "$CONFD" == "0" ]
+then
+	sed -r -i 's#(include_recursive "conf.d")#// \1#g' /etc/icinga2/icinga2.conf
+fi
+
 exec /etc/init.d/icinga2 foreground
