@@ -10,9 +10,9 @@ sed -i 's#^log_error = /var/log/mysql/error.log#console#' /etc/mysql/my.cnf
 sed -i 's#key_buffer_size =#key_buffer =#g' /etc/mysql/my.cnf
 
 # Configure mysql to start as a service
-mkdir /opt/docker-mysql
-cp -a /build/mysql/service.sh /opt/init-mysql.sh
+cd `dirname $0`
+cp -a service.sh /opt/init-mysql.sh
 chmod +x /opt/init-mysql.sh
 
 cat /dev/null > /var/log/mysql/error.log
-find /build -delete
+find . -delete -print

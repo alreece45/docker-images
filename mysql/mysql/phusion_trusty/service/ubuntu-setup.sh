@@ -1,1 +1,1 @@
-../ubuntu_trusty/service/setup.sh
+../../ubuntu_trusty/setup/setup.sh
