@@ -5,8 +5,8 @@ MAINTAINER Alexander Reece <alreece45@gmail.com>
 COPY ./phusion_trusty/ubuntu_trusty/packages.sh /build/packages.sh
 RUN /build/packages.sh
 
-COPY ./phusion_trusty/service /build/mysql
-RUN /build/mysql/setup.sh
+COPY ./phusion_trusty/setup /opt/mysql-setup
+RUN /opt/mysql-setup/setup.sh
 
 CMD ["/sbin/my_init"]
 

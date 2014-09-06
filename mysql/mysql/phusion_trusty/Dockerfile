@@ -5,8 +5,8 @@ MAINTAINER Alexander Reece <alreece45@gmail.com>
 COPY ./ubuntu_trusty/packages.sh /build/packages.sh
 RUN /build/packages.sh
 
-COPY ./service /build/mysql
-RUN /build/mysql/setup.sh
+COPY ./setup /opt/mysql-setup
+RUN /opt/mysql-setup/setup.sh
 
 CMD ["/sbin/my_init"]
 
