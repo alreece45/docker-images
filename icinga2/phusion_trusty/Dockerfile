@@ -6,5 +6,5 @@ COPY ./packages.sh /build/packages.sh
 RUN /build/packages.sh
 
 # Setup the packages
-COPY ./icinga2 /build/icinga2
-RUN /build/icinga2/setup.sh
+COPY ./setup /opt/icinga2-setup
+RUN /opt/icinga2-setup/setup.sh
