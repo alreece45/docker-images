@@ -10,5 +10,3 @@ RUN /build/packages.sh
 # Setup the packages
 COPY ./phusion_trusty/icinga2 /build/icinga2
 RUN /build/icinga2/setup.sh
-
-VOLUME ["/etc/icinga2"]
