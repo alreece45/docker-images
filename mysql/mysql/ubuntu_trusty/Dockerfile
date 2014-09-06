@@ -6,7 +6,8 @@ COPY ./packages.sh /build/packages.sh
 RUN /build/packages.sh
 
 COPY ./setup /opt/mysql-setup
-RUN /opt/mysql-setup/setup.sh
+RUN /opt/mysql-setup/setup.sh \
+     && find /opt/mysql-setup -print -delete
 
 CMD ["/opt/init-mysql.sh"]
 

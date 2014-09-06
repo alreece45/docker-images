@@ -15,4 +15,3 @@ cp -a service.sh /opt/init-mysql.sh
 chmod +x /opt/init-mysql.sh
 
 cat /dev/null > /var/log/mysql/error.log
-find . -delete -print
