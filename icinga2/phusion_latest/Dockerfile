@@ -1,8 +1,6 @@
 FROM phusion/baseimage:latest
 MAINTAINER Alexander Reece <alreece45@gmail.com>
 
-ENV HOME /root
-
 # Install packages first
 COPY ./phusion_trusty/packages.sh /build/packages.sh
 RUN /build/packages.sh
