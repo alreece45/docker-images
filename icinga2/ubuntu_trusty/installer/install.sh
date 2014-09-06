@@ -13,7 +13,7 @@ else
 	apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 36862847
 fi
 
-# Update surces and install packages
+# Update sources and install packages
 . ./common-debian-packages/preinstall.sh
 apt-get -y install icinga2
 . ./common-debian-packages/postinstall.sh
