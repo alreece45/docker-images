@@ -1,14 +1,10 @@
 FROM phusion/baseimage:latest
 MAINTAINER Alexander Reece <alreece45@gmail.com>
 
-ENV HOME /root
-
 # Install packages first
-COPY ./phusion_trusty/packages.sh /build/packages.sh
-RUN /build/packages.sh
+COPY ./phusion_trusty/installer /opt/icinga2-installer
+RUN /opt/incinga2-installer/packages.sh
 
 # Setup the packages
-COPY ./phusion_trusty/icinga2 /build/icinga2
-RUN /build/icinga2/setup.sh
-
-VOLUME ["/etc/icinga2"]
+COPY ./phusion_trusty/setup /opt/icinga2-setup
+RUN /opt/icinga2-setup/setup.sh
