@@ -22,7 +22,7 @@ trust_rfc1918=0
 trust_connected_rfc1918=1
 trust_lla=0
 
-if [ -z "$TRUST" ]
+if [ -n "$TRUST" ]
 then
     trust_connected_rfc1918=0
     if [ "$TRUST" = "connected" ]
@@ -112,6 +112,7 @@ EOF
             then
                 mailname="$2"
             fi
+            ;;
 
         (--skip-trust-all)
             trust_local=0
