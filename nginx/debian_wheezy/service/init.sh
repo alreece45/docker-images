@@ -7,6 +7,7 @@ then
     NGINX_DOCROOT="$DOCROOT"
 fi
 
+# Update the document root configuration, create the document root if needed
 sed -i "s#root .*;#root $NGINX_DOCROOT;#" /etc/nginx/sites-enabled/default
 mkdir -p $NGINX_DOCROOT
 
