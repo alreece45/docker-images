@@ -330,7 +330,7 @@ then
     sed -i "s#myhostname =.*#myhostname = $mailname#" /etc/postfix/main.cf
 fi
 
-seded_mynetworks=`echo $MYNETWORK | sed 's/#/\\#/g'`
+seded_mynetworks=`echo $mynetworks | sed 's/#/\\#/g'`
 sed -i -r "s#mynetworks = (.*)#mynetworks = $mynetworks#g" /etc/postfix/main.cf
 
 # Utilize the init script to configure the chroot (if needed)
