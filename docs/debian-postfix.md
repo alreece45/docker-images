@@ -16,7 +16,7 @@ or started started. (the phusion baseimage does start a syslog server).
 
 For simplicity, you can bind-mount the one on the host using `-v /dev/log:/dev/log`
 
-Suggested Volumes
+Potential Volumes
 ===
 
   * `/var/spool/postfix` is the spool directory. Its also where postfix chroots to by default.
