@@ -11,23 +11,61 @@ fi
 sed -i "s#root .*;#root $NGINX_DOCROOT;#" /etc/nginx/sites-enabled/default
 mkdir -p $NGINX_DOCROOT
 
-if [ -n "$SYNC_UID" ] && [ $SYNC_UID -eq 1 ]
+# Check to see if we should get the nginx uid/gid from the document root
+if [ "$SYNC_UID" = "1" ]
 then
-    uid=`stat -c '%u' $NGINX_DOCROOT`
-    gid=`stat -c '%g' $NGINX_DOCROOT`
+    APP_UID_GID_FROM="$NGINX_DOCROOT"
+fi
+if [ "$APP_UID_FROM_DOCROOT" = "1" ]
+then
+    APP_UID_FROM="$NGINX_DOCROOT"
+fi
+if [ "$APP_GID_FROM_DOCROOT" = "1" ]
+then
+    APP_GID_FROM="$NGINX_DOCROOT"
+fi
+if [ "$APP_UID_GID_FROM_DOCROOT" = "1" ]
+then
+    APP_UID_GID_FROM="$NGINX_DOCROOT"
+fi
 
-    echo "Updating www-data ids to ($uid:$gid)"
-
-    if [ ! $uid -eq 0 ]
+# Check to see if there's a path to get uid and gid from
+if [ -n "$APP_UID_FROM" ]
+then
+    if [ -n "$APP_UID" ]
     then
-        sed -i "s#^www-data:x:.*:.*:#www-data:x:$uid:$gid:#" /etc/passwd
+        APP_UID=`stat -c '%u' $APP_UID_FROM`
     fi
-
-    if [ ! $gid -eq 0 ]
+fi
+if [ -n "$APP_GID_FROM" ]
+then
+    if [ -n "$APP_GID" ]
     then
-        sed -i "s#^www-data:x:.*:#www-data:x:$gid:#" /etc/group
+        APP_GID=`stat -c '%g' $APP_GID_FROM`
     fi
+fi
+if [ -n "$APP_UID_GID_FROM" ]
+then
+    if [ -n "$APP_GID" ]
+    then
+        APP_UID=`stat -c '%u' $APP_UID_GID_FROM`
+        APP_GID=`stat -c '%g' $APP_UID_GID_FROM`
+    fi
+fi
 
+# Change the uid of the www-data user, if specified
+if [ -n "$APP_UID" ]
+then
+    if [ -z "$APP_GID" ]
+    then
+        APP_GID=`getent group www-data`
+    fi
+    echo "Updating www-data ids to ($APP_UID:$APP_GID)"
+
+    sed -i "s#^www-data:x:.*:.*:#www-data:x:$APP_UID:$APP_GID:#" /etc/passwd
+    sed -i "s#^www-data:x:.*:#www-data:x:$APP_GID:#" /etc/group
     chown www-data /var/log/nginx
 fi
+
+
 exec nginx
