@@ -20,7 +20,7 @@ Potential Volumes
 ===
 
   * `/var/spool/postfix` is the spool directory. Its also where postfix chroots to by default.
-  * `/etc/postfix` is the configuation directory
+  * `/etc/postfix` is the configuration directory
 
 Options
 ===
