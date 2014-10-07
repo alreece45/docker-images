@@ -5,11 +5,11 @@ if [ "$APP_UID_FROM_ROOT" = "1" ]
 then
     APP_UID_FROM="$APP_ROOT"
 fi
-if [ "$APP_GID_FROM_DOCROOT" = "1" ]
+if [ "$APP_GID_FROM_ROOT" = "1" ]
 then
     APP_GID_FROM="$APP_ROOT"
 fi
-if [ "$APP_UID_GID_FROM_DOCROOT" = "1" ]
+if [ "$APP_UID_GID_FROM_ROOT" = "1" ]
 then
     APP_UID_GID_FROM="$APP_ROOT"
 fi
