@@ -7,7 +7,7 @@ automatically start php-fpm as well.
 
 When PHP is not bundled (with supervisor or runnit), you can connect to PHP in two ways:
 
- * Link another container (eg, with `--link php-fpm:php`). Tries port 9000 by default. use `PHP_PORT`
+ * Link another container (eg, with `--link php-fpm:php`). Tries port 9000 by default. use `APP_PORT`
    to customize.
  * Socket (via shared volume). The default socket is /var/run/php5-fpm.sock. Use `PHP_SOCKET` to customize.
 
