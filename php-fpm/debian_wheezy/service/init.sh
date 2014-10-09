@@ -35,12 +35,10 @@ set_phpfpm_env_var() {
     fi
 }
 
-# Grep for variables that look like docker set them (_PORT_)
-for file in /etc/container_environment/*
+for var in `env | egrep -v -f /opt/php-fpm/setup-env | cut -d= -f1`
 do
-    var=$(basename $file)
-    val=$(cat $file)
-    echo $var $val
+    val=`eval 'echo "$'"$var"'"'`
+    echo "Detected enviroment variable $var: $val"
     set_phpfpm_env_var $var $val
 done
 
