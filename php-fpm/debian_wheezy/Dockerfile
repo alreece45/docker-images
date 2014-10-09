@@ -5,8 +5,9 @@ MAINTAINER Alexander Reece <alreece45@gmail.com>
 COPY ./packages.sh /build/packages.sh
 RUN /build/packages.sh
 
-COPY ./service /build/php-fpm
-RUN /build/php-fpm/setup.sh
+# Setup the service directory and run the setup
+COPY ./service /opt/php-fpm
+COPY ./setup.sh /opt/php-fpm-setup.sh
+RUN /opt/php-fpm-setup.sh
 
-CMD ["/opt/init-php-fpm.sh"]
-
+CMD ["/opt/php-fpm/init.sh"]

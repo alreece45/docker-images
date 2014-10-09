@@ -5,8 +5,9 @@ MAINTAINER Alexander Reece <alreece45@gmail.com>
 COPY ./debian_wheezy/packages.sh /build/packages.sh
 RUN /build/packages.sh
 
-COPY ./debian_wheezy/service /build/php-fpm
-RUN /build/php-fpm/setup.sh
+# Setup the service directory and run the setup
+COPY ./debian_wheezy/service /opt/php-fpm
+COPY ./debian_wheezy/setup.sh /opt/php-fpm-setup.sh
+RUN /opt/php-fpm-setup.sh
 
-CMD ["/opt/init-php-fpm.sh"]
-
+CMD ["/opt/php-fpm/init.sh"]
