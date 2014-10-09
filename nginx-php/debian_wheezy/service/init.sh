@@ -11,13 +11,13 @@ fi
 # Check to see if a link is defined for "php"
 if [ -n "$PHP_NAME" ]
 then
-    if [ -z "$PHP_PORT" ]
+    if [ -z "$APP_PORT" ]
     then
-        PHP_PORT=9000
+        APP_PORT=9000
     fi
 
-    FPM_PORT=`eval echo \\\$PHP_PORT_${PHP_PORT}_TCP_PORT`
-    FPM_HOST=`eval echo \\\$PHP_PORT_${PHP_PORT}_TCP_ADDR`
+    FPM_PORT=`eval echo \\\$PHP_PORT_${APP_PORT}_TCP_PORT`
+    FPM_HOST=`eval echo \\\$PHP_PORT_${APP_PORT}_TCP_ADDR`
 
     if [ -n "$FPM_PORT" -a -n "$FPM_HOST" ]
     then
