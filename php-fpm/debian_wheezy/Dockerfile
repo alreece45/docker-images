@@ -10,4 +10,3 @@ RUN /build/php-fpm/setup.sh
 
 CMD ["/opt/init-php-fpm.sh"]
 
-EXPOSE 9000
