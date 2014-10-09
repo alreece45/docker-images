@@ -10,3 +10,9 @@ php5enmod mcrypt
 
 # Ensure the mode is correct on the unix socket
 sed -i 's#;listen.mode = 0660#listen.mode = 0666#g' /etc/php5/fpm/pool.d/www.conf
+
+# Collect a list of enviromental variables, use this list to see what docker added later
+env | cut -d= -f1 > /opt/php-fpm/env-from-setup
+
+# Remove the setup file after we're done
+rm "$0"
